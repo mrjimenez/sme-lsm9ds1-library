@@ -303,13 +303,13 @@ bool LSM9DS1_M::activate(void)
     ctrl_reg1_m.operative_mode_xy = LSM9DS1_OM_M_LOW_POWER;
     ctrl_reg1_m.fast_odr = 1;
     ctrl_reg1_m.temp_comp = 1;
-    writeRegister(addr(), M_CTRL_REG1_G, data);
+    writeRegister(addr(), M_CTRL_REG1_G, ctrl_reg1_m.byte);
 
     ctrl_reg4_m.byte = 0;
     /* "LOW_POWER" permite operar o magnetômetro a 1 kHz. */
     /* ctrl_reg4_m.operative_mode_z = LSM9DS1_OMZ_M_ULTRA_HIGH_PERFORMANCE;*/
     ctrl_reg4_m.operative_mode_z = LSM9DS1_OMZ_M_LOW_POWER;
-    writeRegister(addr(), M_CTRL_REG4_G, data);
+    writeRegister(addr(), M_CTRL_REG4_G, ctrl_reg4_m.byte);
 
     return true;
 }
